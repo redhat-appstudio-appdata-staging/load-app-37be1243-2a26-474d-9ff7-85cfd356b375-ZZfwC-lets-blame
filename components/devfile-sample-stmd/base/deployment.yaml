@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-stmd
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-stmd
+    app.kubernetes.io/part-of: load-app-37be1243-2a26-474d-9ff7-85cfd356b375
+  name: devfile-sample-stmd
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: nodejs-app
+      app.kubernetes.io/instance: devfile-sample-stmd
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nodejs-app
+        app.kubernetes.io/instance: devfile-sample-stmd
+    spec:
+      containers:
+      - image: nodejs-image:latest
+        name: my-nodejs
+        ports:
+        - containerPort: 3001
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
